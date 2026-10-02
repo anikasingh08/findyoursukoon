@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sukoon — Find Your Sukoon</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #eaf6ff, #d8edff);
+      color: #12304a;
+      min-height: 100vh;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      background: #0879c9;
+      color: white;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav span {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    /* HERO */
+
+    .hero {
+      text-align: center;
+      padding: 75px 20px 55px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      color: #0568ad;
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      font-size: 25px;
+      color: #35627d;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.7;
+      color: #55788e;
+      font-size: 17px;
+    }
+
+    .start-button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      background: #0879c9;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 17px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .start-button:hover {
+      background: #0563a5;
+      transform: translateY(-2px);
+    }
+
+    /* FEATURES */
+
+    .features {
+      max-width: 1050px;
+      margin: 10px auto 70px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.85);
+      padding: 28px 20px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 5px 18px rgba(30,100,150,0.1);
+    }
+
+    .feature-card .icon {
+      font-size: 35px;
+      margin-bottom: 12px;
+    }
+
+    .feature-card h3 {
+      color: #086eae;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      color: #668397;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    /* CHATBOT */
+
+    #chat-section {
+      display: none;
+      padding: 50px 20px 80px;
+    }
+
+    .chat-container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 10px 35px rgba(20,100,150,0.18);
+    }
+
+    .chat-header {
+      background: #0879c9;
+      color: white;
+      padding: 22px;
+    }
+
+    .chat-header h2 {
+      margin-bottom: 4px;
+    }
+
+    .chat-header p {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    #chat-box {
+      height: 430px;
+      overflow-y: auto;
+      padding: 22px;
+      background: #f5fbff;
+    }
+
+    .message {
+      margin-bottom: 16px;
+      display: flex;
+    }
+
+    .bot {
+      justify-content: flex-start;
+    }
+
+    .user {
+      justify-content: flex-end;
+    }
+
+    .message-content {
+      max-width: 80%;
+      padding: 13px 16px;
+      border-radius: 17px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .bot .message-content {
+      background: #e1f2ff;
+      color: #174966;
+      border-bottom-left-radius: 5px;
+    }
+
+    .user .message-content {
+      background: #0879c9;
+      color: white;
+      border-bottom-right-radius: 5px;
+    }
+
+    #options {
+      padding: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      border-top: 1px solid #e5eef5;
+    }
+
+    .option {
+      background: #eef8ff;
+      color: #0871b8;
+      border: 1px solid #9ed4f5;
+      border-radius: 20px;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .option:hover {
+      background: #0879c9;
+      color: white;
+    }
+
+    .back-button {
+      background: transparent;
+      border: none;
+      color: #0879c9;
+      cursor: pointer;
+      padding: 10px 18px 18px;
+      font-size: 13px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #075f99;
+      color: white;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      .tagline {
+        font-size: 20px;
+      }
+
+      .hero {
+        padding-top: 55px;
+      }
+
+      .chat-container {
+        border-radius: 15px;
+      }
+
+      #chat-box {
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <nav>
+    <div class="logo">Sukoon 🌊</div>
+    <span>Find your calm. Find your focus.</span>
+  </nav>
+
+
+  <!-- HERO SECTION -->
+
+  <section class="hero">
+
+    <h1>Find Your Sukoon</h1>
+
+    <div class="tagline">
+      Your study companion when things feel overwhelming.
+    </div>
+
+    <p>
+      Sukoon helps students navigate academic pressure with
+      study planning, concentration techniques, exam calming
+      strategies and motivation after setbacks.
+    </p>
+
+    <button class="start-button" onclick="openChat()">
+      💬 Talk to Sukoon
+    </button>
+
+  </section>
+
+
+  <!-- FEATURES -->
+
+  <section class="features">
+
+    <div class="feature-card">
+      <div class="icon">📚</div>
+      <h3>Study Timetable</h3>
+      <p>
+        Create a simple study routine that works around
+        your subjects and available time.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">🧘</div>
+      <h3>Exam Calm</h3>
+      <p>
+        Try quick techniques to calm yourself when
+        exam stress starts taking over.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">💙</div>
+      <h3>Motivation</h3>
+      <p>
+        Feeling discouraged after a bad result?
+        Sukoon is here to help you reset.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <div class="icon">🎯</div>
+      <h3>Concentration</h3>
+      <p>
+        Discover practical ways to reduce distractions
+        and get back into focus.
+      </p>
+    </div>
+
+  </section>
+
+
+  <!-- CHATBOT -->
+
+  <section id="chat-section">
+
+    <div class="chat-container">
+
+      <div class="chat-header">
+        <h2>💙 Sukoon</h2>
+        <p>Your study & wellbeing companion</p>
+      </div>
+
+      <div id="chat-box"></div>
+
+      <div id="options"></div>
+
+      <button class="back-button" onclick="restartChat()">
+        ↩ Start over
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    © 2026 Sukoon · Find Your Sukoon
+  </footer>
+
+
+  <script>
+
+    const chatBox = document.getElementById("chat-box");
+    const optionsBox = document.getElementById("options");
+
+    function openChat() {
+
+      document.getElementById("chat-section").style.display = "block";
+
+      document.getElementById("chat-section").scrollIntoView({
+        behavior: "smooth"
+      });
+
+      restartChat();
+    }
+
+
+    function addMessage(text, sender) {
+
+      const message = document.createElement("div");
+
+      message.className = "message " + sender;
+
+      message.innerHTML = `
+        <div class="message-content">
+          ${text}
+        </div>
+      `;
+
+      chatBox.appendChild(message);
+
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+
+    function showOptions(options) {
+
+      optionsBox.innerHTML = "";
+
+      options.forEach(option => {
+
+        const button = document.createElement("button");
+
+        button.className = "option";
+
+        button.textContent = option.text;
+
+        button.onclick = option.action;
+
+        optionsBox.appendChild(button);
+
+      });
+
+    }
+
+
+    function bot(text) {
+
+      addMessage(text, "bot");
+
+    }
+
+
+    function user(text) {
+
+      addMessage(text, "user");
+
+    }
+
+
+    function restartChat() {
+
+      chatBox.innerHTML = "";
+
+      bot(
+        "Hi! I'm Sukoon 💙<br><br>" +
+        "I'm here to help you with your studies and academic stress. " +
+        "What would you like help with today?"
+      );
+
+      showMainOptions();
+
+    }
+
+
+    function showMainOptions() {
+
+      showOptions([
+
+        {
+          text: "📚 Make a study timetable",
+          action: timetable
+        },
+
+        {
+          text: "😰 I'm stressed about exams",
+          action: examStress
+        },
+
+        {
+          text: "💔 I failed / got a bad result",
+          action: failure
+        },
+
+        {
+          text: "🎯 I can't concentrate",
+          action: concentration
+        }
+
+      ]);
+
+    }
+
+
+    /* STUDY TIMETABLE */
+
+    function timetable() {
+
+      user("📚 I want help making a study timetable.");
+
+      bot(
+        "Absolutely! Let's make studying feel more manageable. " +
+        "First, how much time do you have available each day?"
+      );
+
+      showOptions([
+
+        {
+          text: "⏰ 1–2 hours",
+          action: () => timetableResult("1–2 hours")
+        },
+
+        {
+          text: "⏰ 3–4 hours",
+          action: () => timetableResult("3–4 hours")
+        },
+
+        {
+          text: "⏰ 5+ hours",
+          action: () => timetableResult("5+ hours")
+        }
+
+      ]);
+
+    }
+
+
+    function timetableResult(time) {
+
+      user(time);
+
+      bot(
+        `With ${time} available, try this structure:<br><br>
+        
+        🌱 <b>25–50 min</b> — Study one topic<br>
+        ☕ <b>5–10 min</b> — Take a break<br>
+        📖 <b>25–50 min</b> — Second topic<br>
+        📝 <b>15 min</b> — Recall/revise what you learned<br><br>
+        
+        Don't try to study everything at once. ` +
+        "Small consistent sessions can be easier to maintain."
+      );
+
+      showOptions([
+
+        {
+          text: "📚 Choose another topic",
+          action: timetable
+        },
+
+        {
+          text: "🏠 Back to main menu",
+          action: restartChat
+        }
+
+      ]);
+
+    }
+
+
+    /* EXAM STRESS */
+
+    function examStress() {
+
+      user("😰 I'm stressed about exams.");
+
+      bot(
+        "You're not alone. Let's bring things down a little first. 💙<br><br>" +
+        "What would help you most right now?"
+      );
+
+      showOptions([
+
+        {
+          text: "🫁 Calm down quickly",
+          action: calmDown
+        },
+
+        {
+          text: "📚 I'm worried I won't finish",
+          action: examPlanning
+        },
+
+        {
+          text: "😵 My mind is blank",
+          action: mindBlank
+        }
+
+      ]);
+
+    }
+
+
+    function calmDown() {
+
+      user("🫁 I want to calm down.");
+
+      bot(
+        "Try this for the next minute:<br><br>" +
+        "1️⃣ Put your phone down.<br>" +
+        "2️⃣ Relax your shoulders.<br>" +
+        "3️⃣ Breathe in slowly for 4 seconds.<br>" +
+        "4️⃣ Breathe out slowly for 6 seconds.<br>" +
+        "5️⃣ Repeat a few times.<br><br>" +
+        "You don't have to solve everything right now. Just focus on the next small step. 💙"
+      );
+
+      showOptions([
+
+        {
+          text: "📚 Help me plan my studying",
+          action: timetable
+        },
+
+        {
+          text: "🏠 Main menu",
+          action: restartChat
+        }
+
+      ]);
+
+    }
+
+
+    function examPlanning() {
+
+      user("😟 I'm worried I won't finish.");
+
+      bot(
+        "Let's make the problem smaller. 💙<br><br>" +
+        "Write down everything you still need to study. " +
+        "Then divide it into:<br><br>" +
+        "🔴 Must know<br>" +
+        "🟡 Should know<br>" +
+        "🟢 If there's time<br><br>" +
+        "Start with the most important topics instead of trying to finish everything simultaneously."
+      );
+
+      showOptions([
+
+        {
+          text: "📚 Make a timetable",
+          action: timetable
+        },
+
+        {
+          text: "🏠 Main menu",
+          action: restartChat
+        }
+
+      ]);
+
+    }
+
+
+    function mindBlank() {
+
+      user("😵 My mind is blank.");
+
+      bot(
+        "That's okay. Stress can make it harder to recall information. " +
+        "Take a short break, drink some water, and try writing down " +
+        "whatever you remember about the topic—even if it feels incomplete. " +
+        "You can build from there. 💙"
+      );
+
+      showOptions([
+
+        {
+          text: "🫁 Calm down",
+          action: calmDown
+        },
+
+        {
+          text: "🏠 Main menu",
+          action: restartChat
+        }
+
+      ]);
+
+    }
+
+
+    /* FAILURE */
+
+    function failure() {
+
+      user("💔 I failed / got a bad result.");
+
+      bot(
+        "I'm sorry you're dealing with that. A result can feel really disappointing. 💙<br><br>" +
+        "But one result doesn't have to define what happens next. " +
+        "Would you like to..."
+      );
+
+      showOptions([
+
+        {
+          text: "💪 Get motivated",
+          action: motivation
+        },
+
+        {
+          text: "🔎 Figure out what went wrong",
+          action: analyseFailure
+        }
+
+      ]);
+
+    }
+
+
+    function motivation() {
+
+      user("💪 I need motivation.");
+
+      bot(
+        "You don't need to feel motivated before you start. " +
+        "Sometimes starting with one tiny task comes first. 🌱<br><br>" +
+        "Choose one thing you can finish in the next 15 minutes. " +
+        "Finishing that gives you something concrete to build on."
+      );
+
+      showOptions([
+
+        {
+          text: "📚 Give me a small study plan",
+          action: timetable
+        },
+
+        {
+          text: "🏠 Main menu",
+          action: restartChat
+        }
+
+      ]);
+
+    }
+
+
+    function analyseFailure() {
+
+      user("🔎 I want to figure out what went wrong.");
+
+      bot(
+        "Try looking at your result without judging yourself. Ask:<br><br>" +
+        "• Which topics did I lose marks on?<br>" +
+        "• Did I understand the material but struggle with time?<br>" +
+        "• Did I revise actively or mostly reread?<br>" +
+        "• What can I change before the next test?<br><br>" +
+        "The goal is to find something specific you can improve."
+      );
+
+      showOptions([
+
+        {
+          text: "📚 Make a new study plan",
+          action: timetable
+        },
+
+        {
+          text: "🏠 Main menu",
+          action: restartChat
+        }
+
+      ]);
+
+    }
+
+
+    /* CONCENTRATION */
+
+    function concentration() {
+
+      user("🎯 I can't concentrate.");
+
+      bot(
+        "Let's make focusing easier. Which problem sounds most like you?"
+      );
+
+      showOptions([
+
+        {
+          text: "📱 My phone distracts me",
+          action: phoneDistraction
+        },
+
+        {
+          text: "😴 I'm tired",
+          action: tired
+        },
+
+        {
+          text: "🧠 I keep overthinking",
+          action: overthinking
+        },
+
+        {
+          text: "😐 I just can't start",
+          action: cannotStart
+        }
+
+      ]);
+
+    }
+
+
+    function phoneDistraction() {
+
+      user("📱 My phone distracts me.");
+
+      bot(
+        "Try a simple experiment: put your phone out of reach for just 25 minutes. " +
+        "Turn on Do Not Disturb and study only one task during that time. " +
+        "You can check your phone during your break. 📵"
+      );
+
+      showOptions([
+
+        {
+          text: "🎯 More concentration tips",
+          action: concentration
+        },
+
+        {
+          text: "🏠 Main menu",
+          action: restartChat
+        }
+
+      ]);
+
+    }
+
+
+    function tired() {
+
+      user("😴 I'm tired.");
+
+      bot(
+        "If you're genuinely exhausted, forcing yourself to study for hours may not be helpful. " +
+        "Try a short break, water, some movement, and then decide whether you can do a small study session. " +
+        "Rest is part of studying too. 💙"
+      );
+
+      showOptions([
+
+        {
+          text: "📚 Make a short study plan",
+          action: timetable
+        },
+
+        {
+          text: "🏠 Main menu",
+          action: restartChat
+        }
+
+      ]);
+
+    }
+
+
+    function overthinking() {
+
+      user("🧠 I keep overthinking.");
+
+      bot(
+        "Try a 'brain dump'. 📝<br><br>" +
+        "Write down everything that's on your mind for two minutes. " +
+        "Then choose just ONE thing you can act on right now. " +
+        "You don't have to solve everything at once."
+      );
+
+      showOptions([
+
+        {
+          text: "🫁 Help me calm down",
+          action: calmDown
+        },
+
+        {
+          text: "🏠 Main menu",
+          action: restartChat
+        }
+
+      ]);
+
+    }
+
+
+    function cannotStart() {
+
+      user("😐 I just can't start.");
+
+      bot(
+        "Don't aim to finish the chapter. Aim to start for just 5 minutes. ⏱️<br><br>" +
+        "Open your book, choose one small topic, and work on it for five minutes. " +
+        "Once you've started, you can decide what to do next."
+      );
+
+      showOptions([
+
+        {
+          text: "📚 Make a study plan",
+          action: timetable
+        },
+
+        {
+          text: "🏠 Main menu",
+          action: restartChat
+        }
+
+      ]);
+
+    }
+
+  </script>
+
+</body>
+</html>
