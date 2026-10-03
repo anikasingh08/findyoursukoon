@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <title>Sukoon — Find Your Sukoon</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -43,31 +45,38 @@
       opacity: 0.9;
     }
 
+
     /* HERO */
 
     .hero {
       text-align: center;
-      padding: 75px 20px 55px;
+      padding: 45px 20px 35px;
     }
 
-    .hero h1 {
-      font-size: 58px;
-      color: #0568ad;
-      margin-bottom: 10px;
+    .hero-logo {
+      width: min(760px, 92vw);
+      max-height: 500px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 28px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(30,100,150,0.10);
     }
 
-    .tagline {
-      font-size: 25px;
-      color: #35627d;
-      margin-bottom: 18px;
-    }
-
-    .hero p {
-      max-width: 650px;
-      margin: auto;
-      line-height: 1.7;
-      color: #55788e;
+    .hero-intro {
+      max-width: 820px;
+      margin: 0 auto;
+      line-height: 1.8;
+      color: #4e7086;
       font-size: 17px;
+    }
+
+    .student-line {
+      margin-top: 25px;
+      color: #0568ad;
+      font-size: 25px;
+      font-weight: 700;
+      font-style: italic;
     }
 
     .start-button {
@@ -86,6 +95,61 @@
       background: #0563a5;
       transform: translateY(-2px);
     }
+
+
+    /* FOUNDER */
+
+    .founder-section {
+      max-width: 850px;
+      margin: 10px auto 65px;
+      padding: 0 20px;
+    }
+
+    .founder-card {
+      background: rgba(255,255,255,0.88);
+      padding: 42px 45px;
+      border-radius: 24px;
+      text-align: left;
+      box-shadow: 0 8px 28px rgba(30,100,150,0.10);
+      border: 1px solid rgba(8,121,201,0.08);
+    }
+
+    .founder-card h2 {
+      text-align: center;
+      color: #0568ad;
+      margin-bottom: 22px;
+      font-size: 30px;
+    }
+
+    .founder-card p {
+      color: #55788e;
+      line-height: 1.8;
+      font-size: 16px;
+      margin-bottom: 17px;
+    }
+
+    .founder-card strong {
+      color: #174966;
+    }
+
+    .founder-quote {
+      margin-top: 25px !important;
+      padding: 20px 22px;
+      background: #eef8ff;
+      border-left: 4px solid #0879c9;
+      border-radius: 12px;
+      color: #35627d !important;
+      font-style: italic;
+    }
+
+    .founder-name {
+      text-align: right;
+      margin-top: -5px;
+      color: #0568ad !important;
+      font-weight: 700;
+      font-size: 14px !important;
+    }
+
 
     /* FEATURES */
 
@@ -121,6 +185,7 @@
       line-height: 1.5;
       font-size: 14px;
     }
+
 
     /* CHATBOT */
 
@@ -226,6 +291,7 @@
       font-size: 13px;
     }
 
+
     /* FOOTER */
 
     footer {
@@ -236,20 +302,34 @@
       font-size: 13px;
     }
 
+
     /* MOBILE */
 
     @media (max-width: 600px) {
 
-      .hero h1 {
-        font-size: 44px;
-      }
-
-      .tagline {
-        font-size: 20px;
-      }
-
       .hero {
-        padding-top: 55px;
+        padding-top: 25px;
+      }
+
+      .hero-logo {
+        width: 96vw;
+        margin-bottom: 22px;
+      }
+
+      .hero-intro {
+        font-size: 15px;
+      }
+
+      .student-line {
+        font-size: 21px;
+      }
+
+      .founder-card {
+        padding: 30px 24px;
+      }
+
+      .founder-card h2 {
+        font-size: 26px;
       }
 
       .chat-container {
@@ -259,18 +339,29 @@
       #chat-box {
         height: 400px;
       }
+
     }
+
   </style>
+
 </head>
 
 
 <body>
 
+
   <!-- NAVIGATION -->
 
   <nav>
-    <div class="logo">Sukoon 🌊</div>
-    <span>Find your calm. Find your focus.</span>
+
+    <div class="logo">
+      Sukoon 🌊
+    </div>
+
+    <span>
+      Find your calm. Find your focus.
+    </span>
+
   </nav>
 
 
@@ -278,101 +369,258 @@
 
   <section class="hero">
 
-    <h1>Find Your Sukoon</h1>
+    <img
+      class="hero-logo"
+      src="images/sukoon-logo.png"
+      alt="Sukoon logo with a brain and flowers"
+    >
 
-    <div class="tagline">
-      Your study companion when things feel overwhelming.
-    </div>
+    <p class="hero-intro">
 
-    <p>
-      Sukoon helps students navigate academic pressure with
-      study planning, concentration techniques, exam calming
-      strategies and motivation after setbacks.
+      Sukoon is an AI-powered study companion designed to help students
+      navigate the challenges of academic life. From creating personalized
+      study plans to managing academic stress, Sukoon provides helpful
+      guidance, practical strategies, and a supportive chatbot experience
+      helping students study smarter while taking care of their well-being.
+
     </p>
 
-    <button class="start-button" onclick="openChat()">
+
+    <div class="student-line">
+
+      by a student, for every student
+
+    </div>
+
+
+    <button
+      class="start-button"
+      onclick="openChat()"
+    >
+
       💬 Talk to Sukoon
+
     </button>
 
   </section>
+
+
+
+  <!-- FOUNDER SECTION -->
+
+  <section class="founder-section">
+
+    <div class="founder-card">
+
+      <h2>
+        🌿 Meet the Founder
+      </h2>
+
+
+      <p>
+
+        <strong>Anika Singh</strong> is an avid reader and programmer who hopes
+        to use her coding skills to create meaningful solutions that help people.
+        As a student herself, she understands the pressure, expectations and
+        stress that can come with academic life.
+
+      </p>
+
+
+      <p>
+
+        With Sukoon, she hopes to turn her passion for technology into something
+        that genuinely supports other students, helping them navigate academic
+        stress, find practical ways to cope and remember that their well-being
+        matters alongside their achievements.
+
+      </p>
+
+
+      <p>
+
+        Beyond coding and building Sukoon, Anika loves listening to music and
+        getting lost in a good book, two things that bring her a sense of calm
+        and inspiration.
+
+      </p>
+
+
+      <p class="founder-quote">
+
+        “I wanted to create something that could make students feel a little
+        less alone when academic life gets overwhelming.”
+
+      </p>
+
+
+      <p class="founder-name">
+
+        Anika Singh, Founder of Sukoon 💙
+
+      </p>
+
+    </div>
+
+  </section>
+
 
 
   <!-- FEATURES -->
 
   <section class="features">
 
+
     <div class="feature-card">
-      <div class="icon">📚</div>
-      <h3>Study Timetable</h3>
+
+      <div class="icon">
+        📚
+      </div>
+
+      <h3>
+        Study Timetable
+      </h3>
+
       <p>
+
         Create a simple study routine that works around
         your subjects and available time.
+
       </p>
+
     </div>
 
+
+
     <div class="feature-card">
-      <div class="icon">🧘</div>
-      <h3>Exam Calm</h3>
+
+      <div class="icon">
+        🧘
+      </div>
+
+      <h3>
+        Exam Calm
+      </h3>
+
       <p>
+
         Try quick techniques to calm yourself when
         exam stress starts taking over.
+
       </p>
+
     </div>
 
+
+
     <div class="feature-card">
-      <div class="icon">💙</div>
-      <h3>Motivation</h3>
+
+      <div class="icon">
+        💙
+      </div>
+
+      <h3>
+        Motivation
+      </h3>
+
       <p>
+
         Feeling discouraged after a bad result?
         Sukoon is here to help you reset.
+
       </p>
+
     </div>
+
+
 
     <div class="feature-card">
-      <div class="icon">🎯</div>
-      <h3>Concentration</h3>
+
+      <div class="icon">
+        🎯
+      </div>
+
+      <h3>
+        Concentration
+      </h3>
+
       <p>
+
         Discover practical ways to reduce distractions
         and get back into focus.
+
       </p>
+
     </div>
 
+
   </section>
+
 
 
   <!-- CHATBOT -->
 
   <section id="chat-section">
 
+
     <div class="chat-container">
 
+
       <div class="chat-header">
-        <h2>💙 Sukoon</h2>
-        <p>Your study & wellbeing companion</p>
+
+        <h2>
+          💙 Sukoon
+        </h2>
+
+        <p>
+          Your study & wellbeing companion
+        </p>
+
       </div>
+
 
       <div id="chat-box"></div>
 
+
       <div id="options"></div>
 
-      <button class="back-button" onclick="restartChat()">
+
+      <button
+        class="back-button"
+        onclick="restartChat()"
+      >
+
         ↩ Start over
+
       </button>
+
 
     </div>
 
   </section>
 
 
+
+  <!-- FOOTER -->
+
   <footer>
+
     © 2026 Sukoon · Find Your Sukoon
+
   </footer>
 
 
+
+  <!-- JAVASCRIPT -->
+
   <script>
 
+
     const chatBox = document.getElementById("chat-box");
+
     const optionsBox = document.getElementById("options");
+
+
 
     function openChat() {
 
@@ -383,7 +631,9 @@
       });
 
       restartChat();
+
     }
+
 
 
     function addMessage(text, sender) {
@@ -401,7 +651,9 @@
       chatBox.appendChild(message);
 
       chatBox.scrollTop = chatBox.scrollHeight;
+
     }
+
 
 
     function showOptions(options) {
@@ -425,6 +677,7 @@
     }
 
 
+
     function bot(text) {
 
       addMessage(text, "bot");
@@ -432,11 +685,13 @@
     }
 
 
+
     function user(text) {
 
       addMessage(text, "user");
 
     }
+
 
 
     function restartChat() {
@@ -452,6 +707,7 @@
       showMainOptions();
 
     }
+
 
 
     function showMainOptions() {
@@ -481,6 +737,7 @@
       ]);
 
     }
+
 
 
     /* STUDY TIMETABLE */
@@ -516,18 +773,19 @@
     }
 
 
+
     function timetableResult(time) {
 
       user(time);
 
       bot(
         `With ${time} available, try this structure:<br><br>
-        
+
         🌱 <b>25–50 min</b> — Study one topic<br>
         ☕ <b>5–10 min</b> — Take a break<br>
         📖 <b>25–50 min</b> — Second topic<br>
         📝 <b>15 min</b> — Recall/revise what you learned<br><br>
-        
+
         Don't try to study everything at once. ` +
         "Small consistent sessions can be easier to maintain."
       );
@@ -547,6 +805,7 @@
       ]);
 
     }
+
 
 
     /* EXAM STRESS */
@@ -582,6 +841,7 @@
     }
 
 
+
     function calmDown() {
 
       user("🫁 I want to calm down.");
@@ -593,7 +853,8 @@
         "3️⃣ Breathe in slowly for 4 seconds.<br>" +
         "4️⃣ Breathe out slowly for 6 seconds.<br>" +
         "5️⃣ Repeat a few times.<br><br>" +
-        "You don't have to solve everything right now. Just focus on the next small step. 💙"
+        "You don't have to solve everything right now. " +
+        "Just focus on the next small step. 💙"
       );
 
       showOptions([
@@ -613,6 +874,7 @@
     }
 
 
+
     function examPlanning() {
 
       user("😟 I'm worried I won't finish.");
@@ -624,7 +886,8 @@
         "🔴 Must know<br>" +
         "🟡 Should know<br>" +
         "🟢 If there's time<br><br>" +
-        "Start with the most important topics instead of trying to finish everything simultaneously."
+        "Start with the most important topics instead of trying " +
+        "to finish everything simultaneously."
       );
 
       showOptions([
@@ -642,6 +905,7 @@
       ]);
 
     }
+
 
 
     function mindBlank() {
@@ -672,6 +936,7 @@
     }
 
 
+
     /* FAILURE */
 
     function failure() {
@@ -679,7 +944,8 @@
       user("💔 I failed / got a bad result.");
 
       bot(
-        "I'm sorry you're dealing with that. A result can feel really disappointing. 💙<br><br>" +
+        "I'm sorry you're dealing with that. " +
+        "A result can feel really disappointing. 💙<br><br>" +
         "But one result doesn't have to define what happens next. " +
         "Would you like to..."
       );
@@ -699,6 +965,7 @@
       ]);
 
     }
+
 
 
     function motivation() {
@@ -727,6 +994,7 @@
       ]);
 
     }
+
 
 
     function analyseFailure() {
@@ -759,6 +1027,7 @@
     }
 
 
+
     /* CONCENTRATION */
 
     function concentration() {
@@ -766,7 +1035,8 @@
       user("🎯 I can't concentrate.");
 
       bot(
-        "Let's make focusing easier. Which problem sounds most like you?"
+        "Let's make focusing easier. " +
+        "Which problem sounds most like you?"
       );
 
       showOptions([
@@ -796,14 +1066,16 @@
     }
 
 
+
     function phoneDistraction() {
 
       user("📱 My phone distracts me.");
 
       bot(
-        "Try a simple experiment: put your phone out of reach for just 25 minutes. " +
-        "Turn on Do Not Disturb and study only one task during that time. " +
-        "You can check your phone during your break. 📵"
+        "Try a simple experiment: put your phone out of reach " +
+        "for just 25 minutes. Turn on Do Not Disturb and study " +
+        "only one task during that time. You can check your phone " +
+        "during your break. 📵"
       );
 
       showOptions([
@@ -823,14 +1095,16 @@
     }
 
 
+
     function tired() {
 
       user("😴 I'm tired.");
 
       bot(
-        "If you're genuinely exhausted, forcing yourself to study for hours may not be helpful. " +
-        "Try a short break, water, some movement, and then decide whether you can do a small study session. " +
-        "Rest is part of studying too. 💙"
+        "If you're genuinely exhausted, forcing yourself to study " +
+        "for hours may not be helpful. Try a short break, water, " +
+        "some movement, and then decide whether you can do a small " +
+        "study session. Rest is part of studying too. 💙"
       );
 
       showOptions([
@@ -848,6 +1122,7 @@
       ]);
 
     }
+
 
 
     function overthinking() {
@@ -878,6 +1153,7 @@
     }
 
 
+
     function cannotStart() {
 
       user("😐 I just can't start.");
@@ -904,7 +1180,9 @@
 
     }
 
+
   </script>
 
 </body>
+
 </html>
